@@ -1,5 +1,6 @@
 package com.example.appfamily.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,6 +27,7 @@ class AdapterPictures: RecyclerView.Adapter<AdapterPictures.PicturesViewHolder>(
         fun bind(classPictures: ClassPictures){
             Glide.with(binding.ivPictures).load(classPictures.pictures).centerCrop()
                 .into(binding.ivPictures)
+            itemView.setOnClickListener(this)
         }
 
         override fun onClick(v: View?) {

@@ -34,7 +34,7 @@ class Repository (private val familyDAO: FamilyDAO) {
         }
     }
 
-    private fun converterFamily(list: List<String>): List<ClassFamily>{
+    fun converterFamily(list: List<String>): List<ClassFamily>{
         val listFamily: MutableList<ClassFamily> = mutableListOf()
         list.map {
             listFamily.add(ClassFamily(it))
@@ -42,7 +42,7 @@ class Repository (private val familyDAO: FamilyDAO) {
         return listFamily
     }
 
-    private fun converterPictures(list: List<String>, members: String): List<ClassPictures>{
+    fun converterPictures(list: List<String>, members: String): List<ClassPictures>{
         val listPictures: MutableList<ClassPictures> = mutableListOf()
         list.map {
             listPictures.add(ClassPictures(pictures = it, members = members))

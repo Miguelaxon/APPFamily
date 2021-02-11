@@ -85,6 +85,7 @@ class AdapterFamily: RecyclerView.Adapter<AdapterFamily.FamilyViewHolder>() {
             }
             Glide.with(binding.ivMembers).load(urlImage).circleCrop()
                 .into(binding.ivMembers)
+            itemView.setOnClickListener(this)
         }
 
         override fun onClick(v: View?) {
