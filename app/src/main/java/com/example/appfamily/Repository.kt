@@ -22,7 +22,7 @@ class Repository (private val familyDAO: FamilyDAO) {
 
     suspend fun getFetchPicturesCotoutines(members: String){
         try {
-            val response = ApiClient.getApiClient().getFetchPictures()
+            val response = ApiClient.getApiClient().getFetchPictures(members)
             when (response.isSuccessful){
                 true -> response.body()?.let {
                     familyDAO.insertAllPictures(converterPictures(it.pictures, members))

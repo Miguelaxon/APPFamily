@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.appfamily.R
 import com.example.appfamily.ViewModel
 import com.example.appfamily.adapter.AdapterFamily
@@ -36,7 +37,6 @@ class FirstFragment : Fragment() {
         binding.rv.layoutManager = GridLayoutManager(context, 1)
         viewModel.allFamily.observe(viewLifecycleOwner, Observer {
             it?.let {
-                Log.d("adapter", "${it}")
                 adapter.update(it)
             }
         })
