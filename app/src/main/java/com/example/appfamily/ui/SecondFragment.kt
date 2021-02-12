@@ -39,6 +39,7 @@ class SecondFragment : Fragment() {
         viewModel.returnPicture().observe(viewLifecycleOwner, Observer {
             it?.let {
                 adapter.update(it)
+                Log.d("obs", "$it")
             }
         })
 
@@ -46,14 +47,13 @@ class SecondFragment : Fragment() {
             it?.let {
                 if (it.favorites){
                     it.favorites = false
-                    viewModel.returnPicture()
+                    viewModel.updateFavImage(it)
                     Toast.makeText(context, "Isn't favorite", Toast.LENGTH_LONG).show()
                 } else {
                     it.favorites = true
-                    viewModel.returnPicture()
+                    viewModel.updateFavImage(it)
                     Toast.makeText(context, "Is favorite", Toast.LENGTH_LONG).show()
                 }
-                Log.d("fav",it.favorites.toString())
             }
         })
     }

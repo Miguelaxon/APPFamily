@@ -25,6 +25,7 @@ class Repository (private val familyDAO: FamilyDAO) {
             val response = ApiClient.getApiClient().getFetchPictures(members)
             when (response.isSuccessful){
                 true -> response.body()?.let {
+                    Log.d("repo", "${it.pictures}")
                     familyDAO.insertAllPictures(converterPictures(it.pictures, members))
                 }
                 false -> Log.d("ERROR", "${response.code()}: ${response.errorBody()}")
@@ -34,10 +35,10 @@ class Repository (private val familyDAO: FamilyDAO) {
         }
     }
 
-    fun converterFamily(list: List<String>): List<ClassFamily>{
+    fun converterFamily(list: List<Persons>): List<ClassFamily>{
         val listFamily: MutableList<ClassFamily> = mutableListOf()
         list.map {
-            listFamily.add(ClassFamily(it))
+            listFamily.add(ClassFamily(name = it.name, url = it.url))
         }
         return listFamily
     }
@@ -52,5 +53,9 @@ class Repository (private val familyDAO: FamilyDAO) {
 
     fun getPicture(members: String): LiveData<List<ClassPictures>>{
         return familyDAO.getPicture(members)
+    }
+
+    suspend fun updateFav(classPictures: ClassPictures){
+        familyDAO.update(classPictures)
     }
 }

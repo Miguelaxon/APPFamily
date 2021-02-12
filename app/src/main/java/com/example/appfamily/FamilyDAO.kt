@@ -1,10 +1,7 @@
 package com.example.appfamily
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface FamilyDAO {
@@ -19,4 +16,7 @@ interface FamilyDAO {
 
     @Query("SELECT * FROM image_table WHERE members = :members")
     fun getPicture(members: String): LiveData<List<ClassPictures>>
+
+    @Update
+    suspend fun update(classPictures: ClassPictures)
 }

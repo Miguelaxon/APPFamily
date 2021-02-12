@@ -1,5 +1,6 @@
 package com.example.appfamily.adapter
 
+import android.graphics.BlurMaskFilter
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.example.appfamily.ClassPictures
 import com.example.appfamily.databinding.ItemPicturesBinding
 
@@ -26,12 +28,21 @@ class AdapterPictures: RecyclerView.Adapter<AdapterPictures.PicturesViewHolder>(
     inner class PicturesViewHolder(private val binding: ItemPicturesBinding):
         RecyclerView.ViewHolder(binding.root), View.OnLongClickListener{
         fun bind(classPictures: ClassPictures){
-            binding.iconILike.visibility = View.GONE
             Glide.with(binding.ivPictures)
                     .load(classPictures.pictures)
+                    .circleCrop()
                     .into(binding.ivPictures)
-            if (classPictures.favorites) binding.iconILike.visibility = View.VISIBLE
-             else binding.iconILike.visibility = View.INVISIBLE
+            if (classPictures.favorites){
+                Glide.with(binding.ivPictures)
+                        .load(classPictures.pictures)
+                        .into(binding.ivPictures)
+            }
+             else {
+                Glide.with(binding.ivPictures)
+                        .load(classPictures.pictures).circleCrop()
+                        .into(binding.ivPictures)
+             }
+
             itemView.setOnLongClickListener(this)
         }
 
