@@ -11,7 +11,7 @@ interface FamilyDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAllFamily(family: List<ClassFamily>)
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertAllPictures(pictures: List<ClassPictures>)
 
     @Query("SELECT * FROM family_table")

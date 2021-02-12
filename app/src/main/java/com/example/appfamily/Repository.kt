@@ -45,7 +45,7 @@ class Repository (private val familyDAO: FamilyDAO) {
     fun converterPictures(list: List<String>, members: String): List<ClassPictures>{
         val listPictures: MutableList<ClassPictures> = mutableListOf()
         list.map {
-            listPictures.add(ClassPictures(pictures = it, members = members))
+            listPictures.add(ClassPictures(pictures = it, members = members, favorites = false))
         }
         return listPictures
     }
