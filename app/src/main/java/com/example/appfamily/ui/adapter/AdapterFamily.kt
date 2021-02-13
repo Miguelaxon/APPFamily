@@ -1,6 +1,5 @@
-package com.example.appfamily.adapter
+package com.example.appfamily.ui.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,8 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.appfamily.ClassFamily
-import com.example.appfamily.ClassPictures
+import com.example.appfamily.model.local.ClassFamily
 import com.example.appfamily.databinding.ItemFamilyBinding
 
 class AdapterFamily: RecyclerView.Adapter<AdapterFamily.FamilyViewHolder>() {

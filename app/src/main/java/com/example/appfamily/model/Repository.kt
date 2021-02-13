@@ -1,7 +1,12 @@
-package com.example.appfamily
+package com.example.appfamily.model
 
 import android.util.Log
 import androidx.lifecycle.LiveData
+import com.example.appfamily.model.remote.ApiClient
+import com.example.appfamily.model.local.ClassFamily
+import com.example.appfamily.model.local.ClassPictures
+import com.example.appfamily.model.local.Persons
+import com.example.appfamily.model.local.FamilyDAO
 
 class Repository (private val familyDAO: FamilyDAO) {
     val listAllFamily: LiveData<List<ClassFamily>> = familyDAO.getAllFamily()

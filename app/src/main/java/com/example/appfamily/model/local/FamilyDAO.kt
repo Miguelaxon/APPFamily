@@ -1,7 +1,9 @@
-package com.example.appfamily
+package com.example.appfamily.model.local
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.example.appfamily.model.local.ClassFamily
+import com.example.appfamily.model.local.ClassPictures
 
 @Dao
 interface FamilyDAO {

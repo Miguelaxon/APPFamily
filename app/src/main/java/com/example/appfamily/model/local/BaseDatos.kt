@@ -1,4 +1,4 @@
-package com.example.appfamily
+package com.example.appfamily.model.local
 
 import android.content.Context
 import androidx.room.Database

@@ -1,17 +1,14 @@
-package com.example.appfamily.adapter
+package com.example.appfamily.ui.adapter
 
-import android.graphics.BlurMaskFilter
-import android.util.Log
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.example.appfamily.ClassPictures
+import com.example.appfamily.model.local.ClassPictures
 import com.example.appfamily.databinding.ItemPicturesBinding
 
 class AdapterPictures: RecyclerView.Adapter<AdapterPictures.PicturesViewHolder>() {
@@ -33,14 +30,10 @@ class AdapterPictures: RecyclerView.Adapter<AdapterPictures.PicturesViewHolder>(
                     .circleCrop()
                     .into(binding.ivPictures)
             if (classPictures.favorites){
-                Glide.with(binding.ivPictures)
-                        .load(classPictures.pictures)
-                        .into(binding.ivPictures)
+                binding.ivPictures.setBackgroundColor(Color.BLUE)
             }
              else {
-                Glide.with(binding.ivPictures)
-                        .load(classPictures.pictures).circleCrop()
-                        .into(binding.ivPictures)
+                binding.ivPictures.setBackgroundColor(Color.WHITE)
              }
 
             itemView.setOnLongClickListener(this)

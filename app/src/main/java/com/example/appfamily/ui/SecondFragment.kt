@@ -10,9 +10,8 @@ import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.appfamily.R
-import com.example.appfamily.ViewModel
-import com.example.appfamily.adapter.AdapterPictures
+import com.example.appfamily.viewmodel.ViewModel
+import com.example.appfamily.ui.adapter.AdapterPictures
 import com.example.appfamily.databinding.FragmentSecondBinding
 
 /**

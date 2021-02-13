@@ -1,5 +1,7 @@
-package com.example.appfamily
+package com.example.appfamily.model.remote
 
+import com.example.appfamily.ListFamily
+import com.example.appfamily.ListImage
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
