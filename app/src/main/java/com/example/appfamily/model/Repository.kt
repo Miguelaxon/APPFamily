@@ -30,7 +30,6 @@ class Repository (private val familyDAO: FamilyDAO) {
             val response = ApiClient.getApiClient().getFetchPictures(members)
             when (response.isSuccessful){
                 true -> response.body()?.let {
-                    Log.d("repo", "${it.pictures}")
                     familyDAO.insertAllPictures(converterPictures(it.pictures, members))
                 }
                 false -> Log.d("ERROR", "${response.code()}: ${response.errorBody()}")
