@@ -15,4 +15,7 @@
     <string name="ingrese_correo_a_enviar">Ingrese correo a enviar</string>
     <string name="asunto">Asunto:</string>
     <string name="ingrese_asunto">Ingrese asunto</string>
+    <string name="mensaje">Mensaje:</string>
+    <string name="btn_enviar">ENVIAR</string>
+    <string name="btn_salir">SALIR</string>
 </resources>
