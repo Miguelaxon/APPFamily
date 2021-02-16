@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_FirstFragment_to_favoritesFragment"
             app:destination="@id/favoritesFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_contactFragment"
+            app:destination="@id/contactFragment" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -30,7 +33,11 @@
     </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
-        android:name="com.example.appfamily.FavoritesFragment"
+        android:name="com.example.appfamily.ui.FavoritesFragment"
         android:label="fragment_favorites"
         tools:layout="@layout/fragment_favorites" />
+    <fragment
+        android:id="@+id/contactFragment"
+        android:name="com.example.appfamily.ui.ContactFragment"
+        android:label="ContactFragment" />
 </navigation>

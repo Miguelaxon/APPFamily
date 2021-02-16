@@ -33,8 +33,11 @@ class FirstFragment : Fragment() {
         binding.rv.layoutManager = GridLayoutManager(context, 1)
 
         binding.fab.setOnClickListener {
-            Log.d("fab", "${it.toString()}")
             findNavController().navigate(R.id.action_FirstFragment_to_favoritesFragment)
+        }
+
+        binding.fab2.setOnClickListener {
+            findNavController().navigate(R.id.action_FirstFragment_to_contactFragment)
         }
 
         viewModel.allFamily.observe(viewLifecycleOwner, Observer {
