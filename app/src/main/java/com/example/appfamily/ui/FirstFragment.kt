@@ -1,10 +1,12 @@
 package com.example.appfamily.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.appfamily.R
@@ -12,9 +14,6 @@ import com.example.appfamily.viewmodel.ViewModel
 import com.example.appfamily.ui.adapter.AdapterFamily
 import com.example.appfamily.databinding.FragmentFirstBinding
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
 class FirstFragment : Fragment() {
     private lateinit var binding: FragmentFirstBinding
     private val viewModel: ViewModel by activityViewModels()
@@ -33,8 +32,14 @@ class FirstFragment : Fragment() {
         binding.rv.adapter = adapter
         binding.rv.layoutManager = GridLayoutManager(context, 1)
 
+        binding.fab.setOnClickListener {
+            Log.d("fab", "${it.toString()}")
+            findNavController().navigate(R.id.action_FirstFragment_to_favoritesFragment)
+        }
+
         viewModel.allFamily.observe(viewLifecycleOwner, Observer {
             it?.let {
+                Log.d("error", it.toString())
                 adapter.update(it)
             }
         })

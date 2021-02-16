@@ -31,6 +31,8 @@ class ViewModel(application: Application): AndroidViewModel(application) {
 
     fun returnPicture(): LiveData<List<ClassPictures>> = repository.getPicture(members)
 
+    fun returnFavorites(): LiveData<List<ClassPictures>> = repository.getFavorites()
+
     fun updateFavImage(classPictures: ClassPictures) = viewModelScope.launch {
         repository.updateFav(classPictures)
     }

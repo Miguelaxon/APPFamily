@@ -16,6 +16,7 @@ class Repository (private val familyDAO: FamilyDAO) {
             val response = ApiClient.getApiClient().getFetchFamily()
             when (response.isSuccessful){
                 true -> response.body()?.let {
+                    Log.d("listaRepo","${it.members}")
                     familyDAO.insertAllFamily(converterFamily(it.members))
                 }
                 false -> Log.d("ERROR", "${response.code()}: ${response.errorBody()}")
@@ -58,6 +59,8 @@ class Repository (private val familyDAO: FamilyDAO) {
     fun getPicture(members: String): LiveData<List<ClassPictures>>{
         return familyDAO.getPicture(members)
     }
+
+    fun getFavorites(): LiveData<List<ClassPictures>> = familyDAO.getFavorites()
 
     suspend fun updateFav(classPictures: ClassPictures){
         familyDAO.update(classPictures)

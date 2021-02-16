@@ -19,6 +19,9 @@ interface FamilyDAO {
     @Query("SELECT * FROM image_table WHERE members = :members")
     fun getPicture(members: String): LiveData<List<ClassPictures>>
 
+    @Query("SELECT * FROM image_table WHERE favorites = 1")
+    fun getFavorites(): LiveData<List<ClassPictures>>
+
     @Update
     suspend fun update(classPictures: ClassPictures)
 }

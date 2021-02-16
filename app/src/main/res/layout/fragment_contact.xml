@@ -3,12 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
-    android:orientation="horizontal"
-    tools:context=".ContactP">
+    android:layout_height="match_parent"
+    tools:context=".ui.ContactFragment">
 
     <ImageView
-        android:id="@+id/ivWSP"
+        android:id="@+id/ivWSP2"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginTop="10dp"
@@ -17,7 +16,7 @@
         tools:srcCompat="@drawable/ic_whatsapp" />
 
     <ImageView
-        android:id="@+id/ivGM"
+        android:id="@+id/ivGM2"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginTop="10dp"

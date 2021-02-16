@@ -1,5 +1,6 @@
 package com.example.appfamily.ui.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,6 +19,7 @@ class AdapterFamily: RecyclerView.Adapter<AdapterFamily.FamilyViewHolder>() {
 
     fun update(list: List<ClassFamily>){
         listFamily = list
+        Log.d("error2", listFamily.toString())
         notifyDataSetChanged()
     }
 
@@ -27,6 +29,7 @@ class AdapterFamily: RecyclerView.Adapter<AdapterFamily.FamilyViewHolder>() {
             binding.tvMembers.text = classFamily.name.toUpperCase()
             Glide.with(binding.ivMembers).load(classFamily.url).circleCrop()
                 .into(binding.ivMembers)
+            Log.d("error3", "${classFamily.name},${classFamily.url}")
             itemView.setOnClickListener(this)
         }
 
