@@ -72,28 +72,16 @@ class ContactFragment : Fragment() {
                     binding.etTexto.text.toString()
                 )
             } else if (option == 1) {
-                try {
-                    val intent = Intent(Intent.ACTION_SEND).apply {
-                        putExtra(Intent.EXTRA_TEXT, binding.etTexto.text.toString())
-                        putExtra("Miguel Ahumada", "${56951316411}@s.whatsapp.net")
-                        type = "text/plain"
-                        setPackage("com.whatsapp")
-                    }
-                    startActivity(intent)
-                }catch (e: Exception){
-                    e.printStackTrace()
-                    val appPackageName = "com.whatsapp"
-                    try {
-                        startActivity(Intent(Intent.ACTION_VIEW,
-                            Uri.parse("market://details?id=$appPackageName")))
-                    } catch (e :android.content.ActivityNotFoundException) {
-                        startActivity(Intent(Intent.ACTION_VIEW,
-                            Uri.parse("https://play.google.com/store/apps/details?id=" +
-                                    "$appPackageName")))
-                    }
+                val intent = Intent().apply {
+                    action = Intent.ACTION_VIEW
+                    type = "text/plain"
+                    val uri = "whatsapp://send?phone=56951316411"
+                    data = Uri.parse(uri)
+                    putExtra(Intent.EXTRA_TEXT, binding.etTexto.text.toString())
+                    setPackage("com.whatsapp")
                 }
+                startActivity(intent)
             }
-
         }
     }
 
