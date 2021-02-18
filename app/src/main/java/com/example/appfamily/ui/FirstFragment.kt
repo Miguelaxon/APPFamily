@@ -32,14 +32,6 @@ class FirstFragment : Fragment() {
         binding.rv.adapter = adapter
         binding.rv.layoutManager = GridLayoutManager(context, 1)
 
-        binding.fab.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_favoritesFragment)
-        }
-
-        binding.fab2.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_contactFragment)
-        }
-
         viewModel.allFamily.observe(viewLifecycleOwner, Observer {
             it?.let {
                 adapter.update(it)
@@ -65,9 +57,13 @@ class FirstFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val id = item.itemId
-        if (id == R.id.action_settings) {
-            findNavController().navigate(R.id.action_FirstFragment_to_contactFragment)
+        when (item.itemId) {
+            R.id.action_settings -> {
+                findNavController().navigate(R.id.action_FirstFragment_to_contactFragment)
+            }
+            R.id.action_favorites -> {
+                findNavController().navigate(R.id.action_FirstFragment_to_favoritesFragment)
+            }
         }
         return super.onOptionsItemSelected(item)
     }
