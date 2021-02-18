@@ -53,4 +53,22 @@ class FirstFragment : Fragment() {
             }
         })
     }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        setHasOptionsMenu(true)
+        super.onCreate(savedInstanceState)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_main, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+        if (id == R.id.action_settings) {
+            findNavController().navigate(R.id.action_FirstFragment_to_contactFragment)
+        }
+        return super.onOptionsItemSelected(item)
+    }
 }
