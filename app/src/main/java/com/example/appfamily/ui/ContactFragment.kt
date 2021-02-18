@@ -15,10 +15,6 @@ class ContactFragment : Fragment() {
     private lateinit var binding: FragmentContactBinding
     var option: Int = 0
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         binding = FragmentContactBinding.inflate(inflater, container, false)
@@ -65,12 +61,11 @@ class ContactFragment : Fragment() {
         }
 
         binding.btnEnviar.setOnClickListener {
-            if (option == 0){
+            if (option == 0) {
                 onIntent(
                     binding.etMail.text.toString(),
                     binding.etSubject.text.toString(),
-                    binding.etTexto.text.toString()
-                )
+                    binding.etTexto.text.toString())
             } else if (option == 1) {
                 val intent = Intent().apply {
                     action = Intent.ACTION_VIEW

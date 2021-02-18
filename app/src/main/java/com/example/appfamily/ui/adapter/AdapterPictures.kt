@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.appfamily.R
 import com.example.appfamily.model.local.ClassPictures
 import com.example.appfamily.databinding.ItemPicturesBinding
 
@@ -26,7 +27,7 @@ class AdapterPictures: RecyclerView.Adapter<AdapterPictures.PicturesViewHolder>(
         RecyclerView.ViewHolder(binding.root), View.OnLongClickListener{
         fun bind(classPictures: ClassPictures){
             Glide.with(binding.ivPictures)
-                    .load(classPictures.pictures)
+                    .load(classPictures.pictures).placeholder(R.drawable.loading)
                     .circleCrop()
                     .into(binding.ivPictures)
             if (classPictures.favorites){

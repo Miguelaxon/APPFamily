@@ -42,7 +42,6 @@ class FirstFragment : Fragment() {
 
         viewModel.allFamily.observe(viewLifecycleOwner, Observer {
             it?.let {
-                Log.d("error", it.toString())
                 adapter.update(it)
             }
         })
