@@ -3,6 +3,7 @@ package com.example.appfamily.ui
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -18,10 +19,8 @@ class FirstFragment : Fragment() {
     private lateinit var binding: FragmentFirstBinding
     private val viewModel: ViewModel by activityViewModels()
 
-    override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?): View? {
         binding = FragmentFirstBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -58,12 +57,12 @@ class FirstFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_settings -> {
+            R.id.action_settings ->
                 findNavController().navigate(R.id.action_FirstFragment_to_contactFragment)
-            }
-            R.id.action_favorites -> {
+            R.id.action_favorites ->
                 findNavController().navigate(R.id.action_FirstFragment_to_favoritesFragment)
-            }
+            R.id.finish ->
+                activity?.finish()
         }
         return super.onOptionsItemSelected(item)
     }

@@ -71,12 +71,16 @@ class ContactFragment : Fragment() {
                     action = Intent.ACTION_VIEW
                     type = "text/plain"
                     val uri = "whatsapp://send?phone=56951316411"
-                    data = Uri.parse(uri)
                     putExtra(Intent.EXTRA_TEXT, binding.etTexto.text.toString())
+                    data = Uri.parse(uri)
                     setPackage("com.whatsapp")
                 }
                 startActivity(intent)
             }
+        }
+
+        binding.btnSalir.setOnClickListener {
+            activity?.finish()
         }
     }
 
