@@ -3,12 +3,12 @@ package com.example.appfamily.ui
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isInvisible
-import com.example.appfamily.R
+import androidx.fragment.app.Fragment
 import com.example.appfamily.databinding.FragmentContactBinding
 
 class ContactFragment : Fragment() {
@@ -63,19 +63,18 @@ class ContactFragment : Fragment() {
         binding.btnEnviar.setOnClickListener {
             if (option == 0) {
                 onIntent(
-                    binding.etMail.text.toString(),
-                    binding.etSubject.text.toString(),
-                    binding.etTexto.text.toString())
+                        binding.etMail.text.toString(),
+                        binding.etSubject.text.toString(),
+                        binding.etTexto.text.toString())
             } else if (option == 1) {
+                val uri = "whatsapp://send?phone=56951316411" + "&text=" +
+                        binding.etTexto.text.toString().trim()
                 val intent = Intent().apply {
                     action = Intent.ACTION_VIEW
-                    type = "text/plain"
-                    val uri = "whatsapp://send?phone=56951316411"
-                    putExtra(Intent.EXTRA_TEXT, binding.etTexto.text.toString())
                     data = Uri.parse(uri)
-                    setPackage("com.whatsapp")
                 }
                 startActivity(intent)
+                Toast.makeText(context, "Abriendo Whatsapp...", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -86,7 +85,7 @@ class ContactFragment : Fragment() {
 
     fun onIntent(mail: String, subject: String, message: String){
         val intent = Intent(Intent.ACTION_SENDTO).apply {
-            data = Uri.parse("mailto:" + mail)
+            data = Uri.parse("mailto:$mail")
             putExtra(Intent.EXTRA_SUBJECT, subject)
             putExtra(Intent.EXTRA_TEXT, message)
         }
